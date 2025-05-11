@@ -1,0 +1,139 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root, .App {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 16px;
+  background: linear-gradient(50deg, #2D0A5E 0%,rgb(65, 34, 23) 100%);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.nav-bar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nav-bar a,
+.logout-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+
+.nav-bar a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.nav-bar a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.main-content {
+  min-height: 100vh;
+}
+
+/* Only add padding-top when navbar is visible */
+.main-content:has(+ .nav-bar) {
+  padding-top: 80px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .nav-bar {
+    padding: 15px;
+  }
+
+  .nav-bar a {
+    font-size: 1rem;
+    padding: 6px 12px;
+  }
+}
+
+/* Global button gradient animations */
+button, .cta-button, .feature-card {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+button::before, .cta-button::before, .feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(45, 10, 94, 0.2),
+    rgba(230, 85, 37, 0.2),
+    rgba(31, 138, 60, 0.2)
+  );
+  background-size: 200% 200%;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+button:hover::before, .cta-button:hover::before, .feature-card:hover::before {
+  opacity: 1;
+  animation: buttonGradient 3s ease infinite;
+}
+
+@keyframes buttonGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Make sure buttons maintain their existing styles */
+button:hover, .cta-button:hover, .feature-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Any other app-wide styles you want to keep */
