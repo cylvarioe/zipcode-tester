@@ -1,7 +1,8 @@
 {
   "name": "zipcode-tester",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "homepage": "https://cylvarioe.github.io/zipcode-tester",
   "dependencies": {
     "@react-oauth/google": "^0.12.1",
     "@turf/turf": "^7.2.0",
