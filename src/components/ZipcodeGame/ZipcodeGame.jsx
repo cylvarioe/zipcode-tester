@@ -50,7 +50,7 @@ const ZipcodeGame = () => {
   const [foundZipcodes, setFoundZipcodes] = useState(new Set());
   const [gameStarted, setGameStarted] = useState(false);
   const [gameComplete, setGameComplete] = useState(false);
-  const [time, setTime] = useState(0);
+  const [setTime] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const timerRef = useRef(null);
