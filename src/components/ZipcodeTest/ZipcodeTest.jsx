@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, GeoJSON, Tooltip } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import './ZipcodeGame.css';
+import './ZipcodeTest.css';
 
 // Modal component
 const GameOverModal = ({ score, onTryAgain }) => {
@@ -44,13 +44,13 @@ const WelcomeModal = ({ onClose }) => {
   );
 };
 
-const ZipcodeGame = () => {
+const ZipcodeTest = () => {
   const [zipcodes, setZipcodes] = useState([]);
   const [currentZipcode, setCurrentZipcode] = useState(null);
   const [foundZipcodes, setFoundZipcodes] = useState(new Set());
   const [gameStarted, setGameStarted] = useState(false);
   const [gameComplete, setGameComplete] = useState(false);
-  const [time, setTime] = useState(0);
+  const [setTime] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const timerRef = useRef(null);
@@ -228,7 +228,7 @@ const ZipcodeGame = () => {
   );
 
   return (
-    <div className="zipcode-game">
+    <div className="zipcode-test">
       {showWelcome && (
         <WelcomeModal onClose={() => setShowWelcome(false)} />
       )}
@@ -340,4 +340,4 @@ const ZipcodeGame = () => {
   );
 };
 
-export default ZipcodeGame; 
+export default ZipcodeTest; 

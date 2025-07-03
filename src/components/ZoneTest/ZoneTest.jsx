@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './TechTest.css';
+import './ZoneTest.css';
 
 // Zone data based on coordinates
 const zoneData = {
@@ -91,7 +91,7 @@ const WelcomeModal = ({ onClose }) => {
   );
 };
 
-function TechTest() {
+function ZoneTest() {
   const [currentZip, setCurrentZip] = useState('');
   const [selectedZone, setSelectedZone] = useState(null);
   const [isCorrect, setIsCorrect] = useState(false);
@@ -230,7 +230,7 @@ function TechTest() {
   }, []);
 
   return (
-    <div className="tech-test">
+    <div className="zone-test">
       {showWelcome && (
         <WelcomeModal onClose={() => setShowWelcome(false)} />
       )}
@@ -238,7 +238,7 @@ function TechTest() {
         <GameOverModal score={score} onTryAgain={handleReset} />
       )}
       
-      <div className="tech-test-header">
+      <div className="zone-test-header">
         <h2>Zone Test</h2>
         <div className="stats-container">
           <button className="reset-button" onClick={handleReset}>
@@ -263,18 +263,18 @@ function TechTest() {
         <div className="zipcode">{currentZip}</div>
       </div>
 
-      <div className="tech-cards">
+      <div className="zone-cards">
         {shuffledZones.map((zone) => (
           <button
             key={zone}
             data-zone={zone}
-            className={`tech-card ${selectedZone === zone ? 'selected' : ''} ${
+            className={`zone-card ${selectedZone === zone ? 'selected' : ''} ${
               selectedZone === zone && isCorrect ? 'correct' : ''
             } ${selectedZone === zone && isIncorrect ? 'incorrect' : ''}`}
             onClick={() => handleZoneSelect(zone)}
             disabled={!isActive || isCorrect || isIncorrect || showGameOver}
           >
-            <div className="tech-name">{zone}</div>
+            <div className="zone-name">{zone}</div>
           </button>
         ))}
       </div>
@@ -282,4 +282,4 @@ function TechTest() {
   );
 }
 
-export default TechTest; 
+export default ZoneTest; 

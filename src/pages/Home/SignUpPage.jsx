@@ -20,14 +20,14 @@ const SignUpPage = ({ onLoginSuccess }) => {
     console.log("User signed up with email:", email);
     // Call onLoginSuccess and redirect
     onLoginSuccess();
-    navigate('/zipcode-game');
+    navigate('/zipcode-test');
   };
 
   const handleGoogleLogin = (response) => {
     console.log("Google login success:", response);
     // Handle your Google login logic here
     onLoginSuccess();
-    navigate('/zipcode-game');
+    navigate('/zipcode-test');
   };
 
   const handleGoogleFailure = (error) => {

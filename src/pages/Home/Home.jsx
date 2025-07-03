@@ -7,7 +7,7 @@ function Home() {
     <div className="home-container">
       <div className="gradient-background">
         <div className="content-wrapper">
-          <h1 className="title">Welcome to ZipCoder</h1>
+          <h1 className="title">Welcome to Zipcode Tester</h1>
           <p className="subtitle">The Ultimate Zipcode Training Tool for Dispatchers
           <br></br>
           Built to make dispatchers extraordinarily efficient
@@ -19,13 +19,13 @@ function Home() {
           </Link>
           <div className="features-container">
           <div className="features-grid">
-            <Link to="/zipcode-game" className="feature-card">
+            <Link to="/zipcode-test" className="feature-card">
               <h3>🎯 Memory Training</h3>
               <p>Enhance your spatial memory of delivery zones through interactive gameplay</p>
             </Link>
-            <Link to="/tech-test" className="feature-card">
-              <h3>👨‍💻 Tech Zone Test</h3>
-              <p>Master technician coverage areas and improve dispatch efficiency</p>
+            <Link to="/zone-test" className="feature-card">
+              <h3>👨‍💻 Zone Tester</h3>
+              <p>Master area coverage and improve dispatch efficiency</p>
             </Link>
             <div className="feature-card">
               <h3>⚡ Real-time Practice</h3>

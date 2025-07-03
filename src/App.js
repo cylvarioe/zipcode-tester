@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation, Navigate } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import Home from './pages/Home/Home';
-import ZipcodeGame from './components/ZipcodeGame/ZipcodeGame';
-import TechTest from './components/TechTest/TechTest';
+import ZipcodeTest from './components/ZipcodeTest/ZipcodeTest';
+import TechTest from './components/ZoneTest/ZoneTest';
 import Logout from './components/Logout';
 import SignUpPage from './pages/Home/SignUpPage';
 import './App.css';
@@ -13,8 +13,8 @@ const clientId = "590270213154-8a2hnnu2o7kctm3fnnsb1l0v3c0t4n0a.apps.googleuserc
 const NavBar = () => {
   const location = useLocation();
   const isHome = location.pathname === '/' || location.pathname === '/home';
-  const isZipcodeGame = location.pathname === '/zipcode-game';
-  const isTechTest = location.pathname === '/tech-test';
+  const isZipcodeTest = location.pathname === '/zipcode-test';
+  const isTechTest = location.pathname === '/zone-test';
   
   if (isHome) {
     return null;
@@ -26,14 +26,14 @@ const NavBar = () => {
         <li>
           <Link to="/">Home</Link>
         </li>
-        {isZipcodeGame && (
+        {isZipcodeTest && (
           <li>
-            <Link to="/tech-test">Tech Zone Test</Link>
+            <Link to="/zone-test">Zone Tester</Link>
           </li>
         )}
         {isTechTest && (
           <li>
-            <Link to="/zipcode-game">ZipCoder</Link>
+            <Link to="/zipcode-test">Zipcode Tester</Link>
           </li>
         )}
         <li>
@@ -67,20 +67,20 @@ function App() {
               path="/signup" 
               element={
                 isLoggedIn ? 
-                <Navigate to="/zipcode-game" /> : 
+                <Navigate to="/zipcode-test" /> : 
                 <SignUpPage onLoginSuccess={handleLoginSuccess} />
               } 
             />
             <Route 
-              path="/zipcode-game" 
+              path="/zipcode-test" 
               element={
                 isLoggedIn ? 
-                <ZipcodeGame /> : 
+                <ZipcodeTest /> : 
                 <Navigate to="/signup" />
               } 
             />
             <Route 
-              path="/tech-test" 
+              path="/zone-test" 
               element={
                 isLoggedIn ? 
                 <TechTest /> : 
