@@ -7,6 +7,7 @@ import TechTest from './components/ZoneTest/ZoneTest';
 import Logout from './components/Logout';
 import SignUpPage from './pages/Home/SignUpPage';
 import './App.css';
+import { Analytics } from '@vercel/analytics/react';
 
 const clientId = "590270213154-8a2hnnu2o7kctm3fnnsb1l0v3c0t4n0a.apps.googleusercontent.com";
 
@@ -90,6 +91,7 @@ function App() {
           </Routes>
         </div>
       </Router>
+      <Analytics />
     </GoogleOAuthProvider>
   );
 }
