@@ -238,45 +238,57 @@ function ZoneTest() {
         <GameOverModal score={score} onTryAgain={handleReset} />
       )}
       
-      <div className="zone-test-header">
-        <h2>Zone Test</h2>
-        <div className="stats-container">
-          <button className="reset-button" onClick={handleReset}>
-            Reset
-          </button>
-          <div className="score">Score: {score}</div>
-          <div className={`timer ${timeLeft <= 30 ? 'warning' : ''}`}>
-            {formatTime(timeLeft)}
+      <div className="zone-test-container">
+        {/* Left Panel - Game Controls */}
+        <div className="game-controls-panel">
+          <div className="zone-test-header">
+            <h2>Zone Test</h2>
           </div>
-          <button 
-            className={`timer-button ${isActive ? 'active' : ''}`} 
-            onClick={toggleTimer}
-            disabled={showGameOver}
-          >
-            {isActive ? 'Pause' : 'Start'}
-          </button>
+          
+          <div className="current-zip">
+            <h3>Current Zipcode:</h3>
+            <div className="zipcode">{currentZip}</div>
+          </div>
+
+          <div className="stats-container">
+            <div className="score">Score: {score}</div>
+            <div className={`timer ${timeLeft <= 30 ? 'warning' : ''}`}>
+              {formatTime(timeLeft)}
+            </div>
+          </div>
+
+          <div className="control-buttons">
+            <button 
+              className={`timer-button ${isActive ? 'active' : ''}`} 
+              onClick={toggleTimer}
+              disabled={showGameOver}
+            >
+              {isActive ? 'Pause' : 'Start'}
+            </button>
+            <button className="reset-button" onClick={handleReset}>
+              Reset
+            </button>
+          </div>
         </div>
-      </div>
 
-      <div className="current-zip">
-        <h3>Current Zipcode:</h3>
-        <div className="zipcode">{currentZip}</div>
-      </div>
-
-      <div className="zone-cards">
-        {shuffledZones.map((zone) => (
-          <button
-            key={zone}
-            data-zone={zone}
-            className={`zone-card ${selectedZone === zone ? 'selected' : ''} ${
-              selectedZone === zone && isCorrect ? 'correct' : ''
-            } ${selectedZone === zone && isIncorrect ? 'incorrect' : ''}`}
-            onClick={() => handleZoneSelect(zone)}
-            disabled={!isActive || isCorrect || isIncorrect || showGameOver}
-          >
-            <div className="zone-name">{zone}</div>
-          </button>
-        ))}
+        {/* Right Panel - Zone Cards */}
+        <div className="zone-cards-panel">
+          <div className="zone-cards">
+            {shuffledZones.map((zone) => (
+              <button
+                key={zone}
+                data-zone={zone}
+                className={`zone-card ${selectedZone === zone ? 'selected' : ''} ${
+                  selectedZone === zone && isCorrect ? 'correct' : ''
+                } ${selectedZone === zone && isIncorrect ? 'incorrect' : ''}`}
+                onClick={() => handleZoneSelect(zone)}
+                disabled={!isActive || isCorrect || isIncorrect || showGameOver}
+              >
+                <div className="zone-name">{zone}</div>
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

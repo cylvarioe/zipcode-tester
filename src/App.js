@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useLocation, Navigate } from 'react-router-dom';
-import { GoogleOAuthProvider } from '@react-oauth/google';
+// BETA VERSION - Authentication bypassed for easier testing
+// To re-enable authentication: uncomment GoogleOAuthProvider, Logout, and SignUpPage imports
+// and restore the signup route and authentication logic
+// import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+// Authentication imports commented out for beta - no login required
+// import { GoogleOAuthProvider } from '@react-oauth/google';
+// import Logout from './components/Logout';
+// import SignUpPage from './pages/Home/SignUpPage';
 import Home from './pages/Home/Home';
 import ZipcodeTest from './components/ZipcodeTest/ZipcodeTest';
 import TechTest from './components/ZoneTest/ZoneTest';
-import Logout from './components/Logout';
-import SignUpPage from './pages/Home/SignUpPage';
 import './App.css';
 import { Analytics } from '@vercel/analytics/react';
 
-const clientId = "590270213154-8a2hnnu2o7kctm3fnnsb1l0v3c0t4n0a.apps.googleusercontent.com";
+// const clientId = "590270213154-8a2hnnu2o7kctm3fnnsb1l0v3c0t4n0a.apps.googleusercontent.com";
 
 const NavBar = () => {
   const location = useLocation();
@@ -37,62 +41,50 @@ const NavBar = () => {
             <Link to="/zipcode-test">Zipcode Tester</Link>
           </li>
         )}
-        <li>
+        {/* Logout removed for beta - no authentication required */}
+        {/* <li>
           <Logout />
-        </li>
+        </li> */}
       </ul>
     </nav>
   );
 };
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(() => {
-    // Check localStorage on initial load
-    return localStorage.getItem('isLoggedIn') === 'true';
-  });
+  // For beta testing, we'll bypass authentication
+  // Keep the state for future use when authentication is needed
+ // const [isLoggedIn, setIsLoggedIn] = useState(true); // Always true for beta
 
-  const handleLoginSuccess = () => {
-    setIsLoggedIn(true);
-    localStorage.setItem('isLoggedIn', 'true');
-  };
+  // const handleLoginSuccess = () => {
+  //   setIsLoggedIn(true);
+  //   localStorage.setItem('isLoggedIn', 'true');
+  // };
 
   return (
-    <GoogleOAuthProvider clientId={clientId}>
+    // <GoogleOAuthProvider clientId={clientId}>
+    <>
       <Router>
         <div className="App">
           <NavBar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
-            <Route 
+            {/* <Route 
               path="/signup" 
               element={
                 isLoggedIn ? 
                 <Navigate to="/zipcode-test" /> : 
                 <SignUpPage onLoginSuccess={handleLoginSuccess} />
               } 
-            />
-            <Route 
-              path="/zipcode-test" 
-              element={
-                isLoggedIn ? 
-                <ZipcodeTest /> : 
-                <Navigate to="/signup" />
-              } 
-            />
-            <Route 
-              path="/zone-test" 
-              element={
-                isLoggedIn ? 
-                <TechTest /> : 
-                <Navigate to="/signup" />
-              } 
-            />
+            /> */}
+            <Route path="/zipcode-test" element={<ZipcodeTest />} />
+            <Route path="/zone-test" element={<TechTest />} />
           </Routes>
         </div>
       </Router>
       <Analytics />
-    </GoogleOAuthProvider>
+    </>
+    // </GoogleOAuthProvider>
   );
 }
 

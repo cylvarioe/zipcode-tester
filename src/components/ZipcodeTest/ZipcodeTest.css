@@ -553,4 +553,23 @@ button:hover {
   .rules-section li {
     font-size: 1rem;
   }
+}
+
+/* Mobile: stack controls on top, map below */
+@media (max-width: 600px) {
+  .game-wrapper {
+    flex-direction: column;
+  }
+  .right-panel {
+    width: 100%;
+    order: 1;
+    margin-bottom: 10px;
+  }
+  .map-container {
+    width: 100vw;
+    min-width: 0;
+    height: 250px;
+    order: 2;
+    margin: 0 -20px;
+  }
 } 

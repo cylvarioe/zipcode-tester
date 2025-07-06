@@ -13,7 +13,7 @@ function Home() {
           Built to make dispatchers extraordinarily efficient
           </p>
           </div>
-          <Link to="/signup" className="cta-button">
+          <Link to="/zipcode-test" className="cta-button">
             <span className="windows-icon">🎮</span>
             START TRAINING
           </Link>
